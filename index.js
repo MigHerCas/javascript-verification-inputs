@@ -19,9 +19,20 @@ function handlePaste(e) {
 }
 
 inputs[0].addEventListener('paste', handlePaste);
-
 form.addEventListener('input', handleInput);
 
+// 123456
+// 785817
+
 // 1. select the text when the next input is focued
+function handleFocus(e) {
+  const input = e.target;
+  console.log(input);
+  if (input.value) e.target.select();
+}
+
+[].forEach.call(inputs, (input) => input.addEventListener('focus', handleFocus));
+
+
 // 2. Auto submit the form if all fields are filled after a paste
 // 3. support for backspacing from 1 input to another
